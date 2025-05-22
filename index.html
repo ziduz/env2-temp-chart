@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Comfort Chart</title>
+  <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: white;
+      padding: 2rem;
+    }
+    table.input-table, table.dataset-table {
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      background: white;
+      border: 1px solid black;
+    }
+    table th, table td {
+      padding: 0.4rem 0.8rem;
+      text-align: left;
+      vertical-align: middle;
+    }
+    table th {
+      background: white;
+    }
+    table td input[type="text"],
+    table td input[type="number"] {
+      width: 120px;
+      height: 32px;
+      font-size: 14px;
+    }
+    #chart {
+      display: inline-block;
+      background: white;
+      padding: 0;
+      border: 1px solid black;
+    }
+    h2 {
+      background: white;
+      padding: 0rem;
+      display: block;
+      font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .input-table button {
+      background-color: #3D5FFF;
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 14px;
+      height: 36px;
+      width: 125px;
+      cursor: pointer;
+    }
+    .input-table button:hover {
+      background-color: #2a46cc;
+    }
+    button#updateButton {
+      background-color: #3D5FFF;
+      color: white;
+      border: none;
+      padding: 0.4rem 1.2rem;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 14px;
+      height: 32px;
+      cursor: pointer;
+    }
+    button#updateButton:hover {
+      background-color: #2a46cc;
+    }
+    .dataset-table {
+      min-width: 1000px;
+    }
+    .notes-cell {
+      max-width: 220px;
+      white-space: normal;
+    }
+  </style>
+</head>
+<body>
+  <h2>Environment II | Assignment 2 | Zidu Zhang A1811776</h2>
+
+  <table class="input-table">
+    <tr>
+      <th>Start HOY</th>
+      <th># Weeks</th>
+    </tr>
+    <tr>
+      <td><input type="number" id="startHOYInput" value="1032" /></td>
+      <td><input type="number" id="numWeeksInput" value="2" /></td>
+    </tr>
+    <tr>
+      <td><button type="button" onclick="setSummerRange()">Set Summer</button></td>
+      <td><button type="button" onclick="setWinterRange()">Set Winter</button></td>
+    </tr>
+    <tr>
+      <th>Min Comfort (°C)</th>
+      <th>Max Comfort (°C)</th>
+    </tr>
+    <tr>
+      <td><input type="number" id="minComfortInput" value="18" /></td>
+      <td><input type="number" id="maxComfortInput" value="28" /></td>
+    </tr>
+    <tr>
+      <th>Y Min (°C)</th>
+      <th>Y Max (°C)</th>
+    </tr>
+    <tr>
+      <td><input type="number" id="yMinInput" value="10" /></td>
+      <td><input type="number" id="yMaxInput" value="40" /></td>
+    </tr>
+    <tr>
+      <th>Chart Width (mm)</th>
+      <th>Chart Height (mm)</th>
+    </tr>
+    <tr>
+      <td><input type="number" id="chartWidthMMInput" value="350" /></td>
+      <td><input type="number" id="chartHeightMMInput" value="100" /></td>
+    </tr>
+  </table>
+
+  <div style="background: white; padding: 0 0 0.5rem 0.8rem; margin-bottom: 1.5rem; border: 1px solid black; width: 1000px;">
+    <table class="dataset-table" id="dynamicDatasetControls" style="border: none;">
+      <thead>
+        <tr><th>Show</th><th>Dataset</th><th>Notes</th><th>Line Color (Hex)</th></tr>
+      </thead>
+      <tbody>
+        <!-- Dataset rows will be inserted dynamically in main.js -->
+      </tbody>
+    </table>
+    <button id="updateButton" style="margin-left: 0.8rem;">Update Chart</button>
+  </div>
+
+  <div id="chart"></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
